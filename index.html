@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sainik School Class VI - 125 Question Diagnostic Test | Coimbatore Defence Academy</title>
+    <style>
+        :root {
+            --primary-color: #0b2545;
+            --secondary-color: #134074;
+            --accent-color: #8da9c4;
+            --light-bg: #eeefef;
+            --success: #2a9d8f;
+            --danger: #e76f51;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-bg);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        header {
+            text-align: center;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+        header h1 {
+            color: var(--primary-color);
+            margin: 0 0 5px 0;
+            font-size: 28px;
+        }
+        header p {
+            color: #555;
+            margin: 0;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .section-box {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background-color: var(--secondary-color);
+        }
+        .btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .question-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .question-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            flex: 1;
+        }
+        .question-category {
+            background: var(--accent-color);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 10px;
+            white-space: nowrap;
+        }
+        .options label {
+            display: block;
+            background: #fdfdfd;
+            border: 1px solid #ddd;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .options label:hover {
+            background: #f1f5f9;
+            border-color: var(--accent-color);
+        }
+        .options input {
+            margin-right: 10px;
+        }
+        .hidden {
+            display: none !important;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .review-item {
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        .correct-ans { background-color: #d1e7dd; color: #0f5132; border: 1px solid #badbcc; }
+        .wrong-ans { background-color: #f8d7da; color: #842029; border: 1px solid #f5c2c7; }
+        .unanswered { background-color: #fff3cd; color: #664d03; border: 1px solid #ffecb5; }
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .whatsapp-btn, .email-btn {
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            flex: 1;
+            min-width: 200px;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+        .whatsapp-btn {
+            background-color: #25d366;
+        }
+        .whatsapp-btn:hover { background-color: #1ebe5d; }
+        .email-btn {
+            background-color: #ea4335;
+        }
+        .email-btn:hover { background-color: #c5221f; }
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--success);
+            transition: width 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .stat-card {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        .stat-label {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+        #quiz-section {
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        .section-title {
+            background: var(--primary-color);
+            color: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>COIMBATORE DEFENCE ACADEMY</h1>
+        <p>AISSEE Sainik School Class VI Entrance — Comprehensive 125 Question Diagnostic Test</p>
+    </header>
+
+    <!-- STEP 1: REGISTRATION FORM -->
+    <div id="registration-section" class="section-box">
+        <h3>📋 Student Details Registration</h3>
+        <p>Please enter student details before starting the assessment.</p>
+        
+        <div class="form-group">
+            <label>Student Full Name:</label>
+            <input type="text" id="student-name" placeholder="Enter student's full name" required>
+        </div>
+        <div class="form-group">
+            <label>Age:</label>
+            <input type="number" id="student-age" placeholder="e.g., 10" required>
+        </div>
+        <div class="form-group">
+            <label>Class Now Studying:</label>
+            <select id="student-class">
+                <option value="Class IV">Class IV</option>
+                <option value="Class V" selected>Class V</option>
+                <option value="Class VI">Class VI / Other</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>School Name:</label>
+            <input type="text" id="student-school" placeholder="Enter current school name" required>
+        </div>
+        <div class="form-group">
+            <label>Parent's Cell Number (WhatsApp):</label>
+            <input type="tel" id="parent-phone" placeholder="e.g., 98430XXXXX" required>
+        </div>
+        <div class="form-group">
+            <label>Email Address:</label>
+            <input type="email" id="parent-email" placeholder="parent@example.com" required>
+        </div>
+        
+        <button class="btn" onclick="startTest()">🚀 Start Diagnostic Test Now</button>
+    </div>
+
+    <!-- STEP 2: QUIZ SECTION -->
+    <div id="quiz-section" class="hidden">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap;">
+            <h3 id="quiz-header" style="margin:0; color: var(--primary-color);">Assessment in Progress</h3>
+            <span id="timer" style="font-weight: bold; color: white; background: var(--danger); padding: 8px 12px; border-radius: 4px;">⏱ Time Left: 180:00</span>
+        </div>
+        
+        <div class="progress-bar">
+            <div id="progress-fill" class="progress-fill" style="width: 0%;">0%</div>
+        </div>
+
+        <form id="diagnostic-form">
+            <!-- Questions will be injected here by JavaScript -->
+        </form>
+    </div>
+
+    <!-- STEP 3: RESULT SECTION -->
+    <div id="result-section" class="hidden">
+        <h3>✅ Diagnostic Performance Summary</h3>
+        <p id="student-summary-text"></p>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value" id="res-attempted">0</div>
+                <div class="stat-label">Questions Attempted</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="res-correct">0</div>
+                <div class="stat-label">Correct Answers</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="res-incorrect">0</div>
+                <div class="stat-label">Incorrect Answers</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="res-percentage">0%</div>
+                <div class="stat-label">Score Percentage</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="res-marks">0/250</div>
+                <div class="stat-label">Marks Scored</div>
+            </div>
+        </div>
+
+        <table>
+            <tr>
+                <th>Subject</th>
+                <th>Total Qs</th>
+                <th>Correct</th>
+                <th>Incorrect</th>
+                <th>Unanswered</th>
+                <th>Accuracy %</th>
+            </tr>
+            <tr>
+                <td>Mathematics</td>
+                <td>50</td>
+                <td id="math-correct">0</td>
+                <td id="math-incorrect">0</td>
+                <td id="math-unanswered">0</td>
+                <td id="math-accuracy">0%</td>
+            </tr>
+            <tr>
+                <td>English</td>
+                <td>25</td>
+                <td id="eng-correct">0</td>
+                <td id="eng-incorrect">0</td>
+                <td id="eng-unanswered">0</td>
+                <td id="eng-accuracy">0%</td>
+            </tr>
+            <tr>
+                <td>General Knowledge</td>
+                <td>25</td>
+                <td id="gk-correct">0</td>
+                <td id="gk-incorrect">0</td>
+                <td id="gk-unanswered">0</td>
+                <td id="gk-accuracy">0%</td>
+            </tr>
+            <tr>
+                <td>Reasoning Ability</td>
+                <td>25</td>
+                <td id="reasoning-correct">0</td>
+                <td id="reasoning-incorrect">0</td>
+                <td id="reasoning-unanswered">0</td>
+                <td id="reasoning-accuracy">0%</td>
+            </tr>
+        </table>
+
+        <h3>📋 Detailed Question Review</h3>
+        <div id="detailed-review" style="max-height: 500px; overflow-y: auto;"></div>
+
+        <div class="action-buttons">
+            <a id="whatsapp-share-btn" href="#" target="_blank" class="whatsapp-btn">📲 Share via WhatsApp</a>
+            <a id="email-share-btn" href="#" class="email-btn">✉️ Share via Email</a>
+            <button class="btn" onclick="downloadCSV()" style="background-color: #2a9d8f; flex: 1; min-width: 200px;">📥 Download Results (CSV)</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let studentData = {};
+    let timerInterval;
+    let timeLeft = 180 * 60; // 180 minutes (3 hours)
+
+    const questions = [
+        // MATHEMATICS (50 questions)
+        { id: 'math1', subject: 'Mathematics', q: 'Find the LCM of 12, 15, and 20.', options: ['30', '60', '120', '90'], ans: 'B' },
+        { id: 'math2', subject: 'Mathematics', q: 'What is the supplementary angle of 75°?', options: ['15°', '95°', '105°', '180°'], ans: 'C' },
+        { id: 'math3', subject: 'Mathematics', q: 'Simplify: 3/5 + 2/5', options: ['1', '5/10', '6/5', '1/5'], ans: 'C' },
+        { id: 'math4', subject: 'Mathematics', q: 'If x = 5, find the value of 2x² - 3x + 1.', options: ['36', '40', '26', '46'], ans: 'D' },
+        { id: 'math5', subject: 'Mathematics', q: 'What is 15% of 200?', options: ['20', '25', '30', '35'], ans: 'C' },
+        { id: 'math6', subject: 'Mathematics', q: 'The square root of 144 is?', options: ['10', '11', '12', '13'], ans: 'C' },
+        { id: 'math7', subject: 'Mathematics', q: 'Find the GCD of 24 and 36.', options: ['6', '8', '12', '18'], ans: 'C' },
+        { id: 'math8', subject: 'Mathematics', q: 'What is 2³ × 3²?', options: ['48', '72', '54', '36'], ans: 'B' },
+        { id: 'math9', subject: 'Mathematics', q: 'Convert 0.75 to a fraction.', options: ['1/4', '2/4', '3/4', '4/5'], ans: 'C' },
+        { id: 'math10', subject: 'Mathematics', q: 'If a triangle has sides 3, 4, 5, what type is it?', options: ['Acute', 'Right', 'Obtuse', 'Isosceles'], ans: 'B' },
+        { id: 'math11', subject: 'Mathematics', q: 'The perimeter of a square with side 7cm is?', options: ['14cm', '21cm', '28cm', '49cm'], ans: 'C' },
+        { id: 'math12', subject: 'Mathematics', q: 'What is 10% of 500?', options: ['25', '50', '75', '100'], ans: 'B' },
+        { id: 'math13', subject: 'Mathematics', q: 'Solve: 2x + 5 = 15', options: ['3', '5', '10', '20'], ans: 'B' },
+        { id: 'math14', subject: 'Mathematics', q: 'The area of a rectangle with length 8cm and width 5cm is?', options: ['26', '40', '13', '80'], ans: 'B' },
+        { id: 'math15', subject: 'Mathematics', q: 'What is the cube root of 27?', options: ['2', '3', '4', '5'], ans: 'B' },
+        { id: 'math16', subject: 'Mathematics', q: 'If 3x = 12, what is x?', options: ['3', '4', '9', '36'], ans: 'B' },
+        { id: 'math17', subject: 'Mathematics', q: 'The circumference of a circle with radius 7cm is? (π ≈ 22/7)', options: ['22', '44', '88', '154'], ans: 'C' },
+        { id: 'math18', subject: 'Mathematics', q: 'What is 25% of 80?', options: ['15', '20', '25', '30'], ans: 'B' },
+        { id: 'math19', subject: 'Mathematics', q: 'The sum of angles in a triangle is?', options: ['90°', '180°', '270°', '360°'], ans: 'B' },
+        { id: 'math20', subject: 'Mathematics', q: 'Express 1/2 as a percentage.', options: ['25%', '50%', '75%', '100%'], ans: 'B' },
+        { id: 'math21', subject: 'Mathematics', q: 'What is 5² - 3²?', options: ['4', '16', '25', '34'], ans: 'B' },
+        { id: 'math22', subject: 'Mathematics', q: 'Find the HCF of 15 and 25.', options: ['3', '5', '15', '25'], ans: 'B' },
+        { id: 'math23', subject: 'Mathematics', q: 'The area of a circle with radius 5cm is? (π ≈ 22/7)', options: ['70', '78.5', '550/7', '110'], ans: 'C' },
+        { id: 'math24', subject: 'Mathematics', q: 'Simplify: 12/18', options: ['1/2', '2/3', '3/4', '4/5'], ans: 'B' },
+        { id: 'math25', subject: 'Mathematics', q: 'What is (-5) + 3?', options: ['-8', '-2', '2', '8'], ans: 'B' },
+        { id: 'math26', subject: 'Mathematics', q: 'The value of 0.5 × 4 is?', options: ['0.2', '2', '0.02', '20'], ans: 'B' },
+        { id: 'math27', subject: 'Mathematics', q: 'If the length is 12 and width is 4, the perimeter of rectangle is?', options: ['16', '32', '48', '96'], ans: 'B' },
+        { id: 'math28', subject: 'Mathematics', q: 'What is 1/4 of 100?', options: ['20', '25', '40', '50'], ans: 'B' },
+        { id: 'math29', subject: 'Mathematics', q: 'The next number in series 1, 4, 9, 16, 25 is?', options: ['30', '35', '36', '49'], ans: 'C' },
+        { id: 'math30', subject: 'Mathematics', q: 'What is 2.5 × 2?', options: ['4.5', '5', '5.5', '6'], ans: 'B' },
+        { id: 'math31', subject: 'Mathematics', q: 'The decimal form of 1/5 is?', options: ['0.1', '0.2', '0.3', '0.5'], ans: 'B' },
+        { id: 'math32', subject: 'Mathematics', q: 'If angle A = 45°, what is the complement?', options: ['45°', '55°', '90°', '135°'], ans: 'A' },
+        { id: 'math33', subject: 'Mathematics', q: 'Solve: x/2 = 10', options: ['5', '10', '20', '40'], ans: 'C' },
+        { id: 'math34', subject: 'Mathematics', q: 'The surface area of a cube with side 3cm is?', options: ['9', '27', '54', '81'], ans: 'C' },
+        { id: 'math35', subject: 'Mathematics', q: 'What is the value of 8 ÷ 4 × 2?', options: ['1', '2', '4', '8'], ans: 'C' },
+        { id: 'math36', subject: 'Mathematics', q: 'If 5x - 3 = 22, find x.', options: ['4', '5', '6', '7'], ans: 'B' },
+        { id: 'math37', subject: 'Mathematics', q: 'The volume of a cube with side 2cm is?', options: ['4', '6', '8', '12'], ans: 'C' },
+        { id: 'math38', subject: 'Mathematics', q: 'What is 20% of 150?', options: ['20', '25', '30', '40'], ans: 'C' },
+        { id: 'math39', subject: 'Mathematics', q: 'Express 60 seconds as a fraction of 1 minute.', options: ['1/2', '1', '2', '60'], ans: 'B' },
+        { id: 'math40', subject: 'Mathematics', q: 'The LCM of 4 and 6 is?', options: ['12', '24', '2', '8'], ans: 'A' },
+        { id: 'math41', subject: 'Mathematics', q: 'What is 3 × (-2)?', options: ['6', '-6', '1', '-1'], ans: 'B' },
+        { id: 'math42', subject: 'Mathematics', q: 'Find the average of 10, 20, 30.', options: ['15', '20', '25', '30'], ans: 'B' },
+        { id: 'math43', subject: 'Mathematics', q: 'If 2x = x + 10, find x.', options: ['5', '10', '15', '20'], ans: 'B' },
+        { id: 'math44', subject: 'Mathematics', q: 'The decimal of 3/5 is?', options: ['0.5', '0.6', '0.7', '0.8'], ans: 'B' },
+        { id: 'math45', subject: 'Mathematics', q: 'What is 7²?', options: ['14', '49', '42', '35'], ans: 'B' },
+        { id: 'math46', subject: 'Mathematics', q: 'The sum of 1/3 and 2/3 is?', options: ['1/3', '2/3', '1', '3/3'], ans: 'C' },
+        { id: 'math47', subject: 'Mathematics', q: 'If one angle is 90°, the triangle is?', options: ['Acute', 'Right', 'Obtuse', 'Straight'], ans: 'B' },
+        { id: 'math48', subject: 'Mathematics', q: 'What is 100 ÷ 5?', options: ['5', '10', '20', '25'], ans: 'C' },
+        { id: 'math49', subject: 'Mathematics', q: 'The GCD of 18 and 27 is?', options: ['3', '6', '9', '18'], ans: 'C' },
+        { id: 'math50', subject: 'Mathematics', q: 'What is the value of 4 × 5 - 2?', options: ['18', '20', '22', '28'], ans: 'A' },
+
+        // ENGLISH (25 questions)
+        { id: 'eng1', subject: 'English', q: 'Choose the correct antonym of "Courage".', options: ['Bravery', 'Fear', 'Boldness', 'Strength'], ans: 'B' },
+        { id: 'eng2', subject: 'English', q: 'Which word is a synonym of "Happy"?', options: ['Sad', 'Joyful', 'Angry', 'Tired'], ans: 'B' },
+        { id: 'eng3', subject: 'English', q: 'The plural of "Child" is?', options: ['Childs', 'Children', 'Childes', 'Childen'], ans: 'B' },
+        { id: 'eng4', subject: 'English', q: 'Which sentence is grammatically correct?', options: ['She go to school', 'She goes to school', 'She going to school', 'She gone to school'], ans: 'B' },
+        { id: 'eng5', subject: 'English', q: 'The opposite of "Begin" is?', options: ['Start', 'End', 'Continue', 'Delay'], ans: 'B' },
+        { id: 'eng6', subject: 'English', q: 'Which word means "To stop moving"?', options: ['Run', 'Walk', 'Pause', 'Jump'], ans: 'C' },
+        { id: 'eng7', subject: 'English', q: 'The plural of "Person" is?', options: ['Persons', 'People', 'Peoples', 'Personess'], ans: 'B' },
+        { id: 'eng8', subject: 'English', q: 'Choose the correct form: "He ___ to the store yesterday."', options: ['goes', 'go', 'went', 'going'], ans: 'C' },
+        { id: 'eng9', subject: 'English', q: 'What is the opposite of "Black"?', options: ['Dark', 'White', 'Blue', 'Gray'], ans: 'B' },
+        { id: 'eng10', subject: 'English', q: 'The synonym of "Large" is?', options: ['Small', 'Tiny', 'Big', 'Narrow'], ans: 'C' },
+        { id: 'eng11', subject: 'English', q: 'Which is spelled correctly?', options: ['Receieve', 'Receive', 'Recieve', 'Receve'], ans: 'B' },
+        { id: 'eng12', subject: 'English', q: 'The past tense of "Run" is?', options: ['Runs', 'Runing', 'Ran', 'Running'], ans: 'C' },
+        { id: 'eng13', subject: 'English', q: 'Choose the antonym of "Quiet".', options: ['Silent', 'Loud', 'Soft', 'Calm'], ans: 'B' },
+        { id: 'eng14', subject: 'English', q: 'What does "Benevolent" mean?', options: ['Evil', 'Kind', 'Angry', 'Happy'], ans: 'B' },
+        { id: 'eng15', subject: 'English', q: 'The plural of "Mouse" is?', options: ['Mouses', 'Mice', 'Mices', 'Mouse'], ans: 'B' },
+        { id: 'eng16', subject: 'English', q: 'Fill the blank: "I ___ to the park."', options: ['goed', 'go', 'goes', 'going'], ans: 'B' },
+        { id: 'eng17', subject: 'English', q: 'The synonym of "Happy" is?', options: ['Sad', 'Cheerful', 'Angry', 'Tired'], ans: 'B' },
+        { id: 'eng18', subject: 'English', q: 'Which word is closest in meaning to "Swift"?', options: ['Slow', 'Quick', 'Heavy', 'Tired'], ans: 'B' },
+        { id: 'eng19', subject: 'English', q: 'The antonym of "Dirty" is?', options: ['Messy', 'Dusty', 'Clean', 'Muddy'], ans: 'C' },
+        { id: 'eng20', subject: 'English', q: 'Choose the correct form: "She ___ breakfast."', options: ['eat', 'eats', 'eaten', 'eating'], ans: 'B' },
+        { id: 'eng21', subject: 'English', q: 'What is the opposite of "Hot"?', options: ['Warm', 'Cold', 'Freezing', 'Heat'], ans: 'B' },
+        { id: 'eng22', subject: 'English', q: 'The synonym of "Beautiful" is?', options: ['Ugly', 'Pretty', 'Plain', 'Ordinary'], ans: 'B' },
+        { id: 'eng23', subject: 'English', q: 'Which word means "To carry"?', options: ['Drop', 'Bear', 'Throw', 'Release'], ans: 'B' },
+        { id: 'eng24', subject: 'English', q: 'The past tense of "Go" is?', options: ['Goed', 'Gone', 'Went', 'Going'], ans: 'C' },
+        { id: 'eng25', subject: 'English', q: 'Choose the correct spelling:', options: ['Occassion', 'Occasion', 'Ocassion', 'Ocasion'], ans: 'B' },
+
+        // GENERAL KNOWLEDGE (25 questions)
+        { id: 'gk1', subject: 'General Knowledge', q: 'Who is the Supreme Commander of the Indian Armed Forces?', options: ['Prime Minister', 'Defence Minister', 'President of India', 'Chief of Defence Staff'], ans: 'C' },
+        { id: 'gk2', subject: 'General Knowledge', q: 'What is the national animal of India?', options: ['Lion', 'Tiger', 'Elephant', 'Peacock'], ans: 'B' },
+        { id: 'gk3', subject: 'General Knowledge', q: 'The capital of India is?', options: ['Mumbai', 'New Delhi', 'Bangalore', 'Kolkata'], ans: 'B' },
+        { id: 'gk4', subject: 'General Knowledge', q: 'Who wrote the Indian National Anthem?', options: ['Bankim Chandra', 'Rabindranath Tagore', 'Keshab Chandra Sen', 'Rammohan Roy'], ans: 'B' },
+        { id: 'gk5', subject: 'General Knowledge', q: 'How many states are there in India?', options: ['28', '29', '30', '31'], ans: 'A' },
+        { id: 'gk6', subject: 'General Knowledge', q: 'The national bird of India is?', options: ['Peacock', 'Parrot', 'Pigeon', 'Crane'], ans: 'A' },
+        { id: 'gk7', subject: 'General Knowledge', q: 'Which is the largest planet in our solar system?', options: ['Saturn', 'Earth', 'Jupiter', 'Neptune'], ans: 'C' },
+        { id: 'gk8', subject: 'General Knowledge', q: 'The height of Mount Everest is approximately?', options: ['7000m', '8000m', '8848m', '9000m'], ans: 'C' },
+        { id: 'gk9', subject: 'General Knowledge', q: 'Who was the first Prime Minister of India?', options: ['Vallabhbhai Patel', 'Jawaharlal Nehru', 'Sardar Patel', 'Dr. Ambedkar'], ans: 'B' },
+        { id: 'gk10', subject: 'General Knowledge', q: 'India became independent on?', options: ['August 15, 1947', 'January 26, 1950', 'August 15, 1950', 'January 26, 1947'], ans: 'A' },
+        { id: 'gk11', subject: 'General Knowledge', q: 'The Constitution of India was adopted on?', options: ['August 15, 1947', 'January 26, 1950', 'November 26, 1949', 'December 25, 1950'], ans: 'C' },
+        { id: 'gk12', subject: 'General Knowledge', q: 'Which planet is known as the Red Planet?', options: ['Venus', 'Mars', 'Mercury', 'Saturn'], ans: 'B' },
+        { id: 'gk13', subject: 'General Knowledge', q: 'Who painted the Mona Lisa?', options: ['Vincent van Gogh', 'Leonardo da Vinci', 'Michelangelo', 'Pablo Picasso'], ans: 'B' },
+        { id: 'gk14', subject: 'General Knowledge', q: 'The Great Wall of China is located in?', options: ['Japan', 'Korea', 'China', 'Thailand'], ans: 'C' },
+        { id: 'gk15', subject: 'General Knowledge', q: 'How many strings does a sitar have typically?', options: ['4', '6', '7', '8'], ans: 'C' },
+        { id: 'gk16', subject: 'General Knowledge', q: 'Which is the largest state in India by area?', options: ['Tamil Nadu', 'Rajasthan', 'Maharashtra', 'Madhya Pradesh'], ans: 'B' },
+        { id: 'gk17', subject: 'General Knowledge', q: 'The currency of India is?', options: ['Rupee', 'Dollar', 'Pound', 'Yen'], ans: 'A' },
+        { id: 'gk18', subject: 'General Knowledge', q: 'Which Indian scientist is known for the "Raman Effect"?', options: ['Jagadish Chandra Bose', 'C.V. Raman', 'Satyendra Nath Bose', 'Homi Bhabha'], ans: 'B' },
+        { id: 'gk19', subject: 'General Knowledge', q: 'How many continents are there?', options: ['5', '6', '7', '8'], ans: 'C' },
+        { id: 'gk20', subject: 'General Knowledge', q: 'Which is the smallest country in the world by area?', options: ['Monaco', 'San Marino', 'Vatican City', 'Liechtenstein'], ans: 'C' },
+        { id: 'gk21', subject: 'General Knowledge', q: 'The Taj Mahal is located in?', options: ['Agra', 'Delhi', 'Lucknow', 'Jaipur'], ans: 'A' },
+        { id: 'gk22', subject: 'General Knowledge', q: 'Who was the first Indian astronaut?', options: ['Kalpana Chawla', 'Rakesh Sharma', 'Sunita Williams', 'Ashish Vidyarthi'], ans: 'B' },
+        { id: 'gk23', subject: 'General Knowledge', q: 'The number of planets in our solar system is?', options: ['8', '9', '10', '11'], ans: 'A' },
+        { id: 'gk24', subject: 'General Knowledge', q: 'Which is the deepest ocean trench?', options: ['Mariana Trench', 'Tonga Trench', 'Kuril-Kamchatka Trench', 'Philippine Trench'], ans: 'A' },
+        { id: 'gk25', subject: 'General Knowledge', q: 'The speed of light is approximately?', options: ['3 × 10⁸ m/s', '3 × 10⁶ m/s', '3 × 10¹⁰ m/s', '3 × 10⁵ m/s'], ans: 'A' },
+
+        // REASONING ABILITY (25 questions)
+        { id: 'reasoning1', subject: 'Reasoning Ability', q: 'Find the missing number in the series: 2, 6, 12, 20, 30, ?', options: ['38', '42', '46', '50'], ans: 'B' },
+        { id: 'reasoning2', subject: 'Reasoning Ability', q: 'Complete the series: 1, 4, 9, 16, 25, ?', options: ['36', '49', '64', '81'], ans: 'B' },
+        { id: 'reasoning3', subject: 'Reasoning Ability', q: 'Which number does NOT belong? 2, 4, 6, 8, 10, 11', options: ['2', '8', '10', '11'], ans: 'D' },
+        { id: 'reasoning4', subject: 'Reasoning Ability', q: 'If FIRE is coded as 6954, then CODE is?', options: ['2345', '3456', '2435', '5432'], ans: 'C' },
+        { id: 'reasoning5', subject: 'Reasoning Ability', q: 'What comes next? Z, X, V, T, ?', options: ['R', 'S', 'U', 'Q'], ans: 'A' },
+        { id: 'reasoning6', subject: 'Reasoning Ability', q: 'If APPLE = 1, BALL = 2, then CART = ?', options: ['3', '4', '5', '6'], ans: 'A' },
+        { id: 'reasoning7', subject: 'Reasoning Ability', q: 'Complete: 10, 20, 40, 80, ?', options: ['100', '120', '160', '200'], ans: 'C' },
+        { id: 'reasoning8', subject: 'Reasoning Ability', q: 'What is the missing number? 3, 6, 9, 12, ?, 18', options: ['14', '15', '16', '17'], ans: 'B' },
+        { id: 'reasoning9', subject: 'Reasoning Ability', q: 'If 2 + 2 = 4 in code, then 3 + 3 = ?', options: ['6', '9', '12', '18'], ans: 'A' },
+        { id: 'reasoning10', subject: 'Reasoning Ability', q: 'Which shape comes next? Square, Circle, Triangle, ?', options: ['Square', 'Circle', 'Rectangle', 'Pentagon'], ans: 'D' },
+        { id: 'reasoning11', subject: 'Reasoning Ability', q: 'Complete the pattern: 5, 10, 15, 20, ?', options: ['25', '30', '35', '40'], ans: 'A' },
+        { id: 'reasoning12', subject: 'Reasoning Ability', q: 'What is the next in series? 1, 1, 2, 3, 5, 8, ?', options: ['10', '11', '12', '13'], ans: 'D' },
+        { id: 'reasoning13', subject: 'Reasoning Ability', q: 'If SMALL = 19, then BIG = ?', options: ['3', '6', '9', '12'], ans: 'B' },
+        { id: 'reasoning14', subject: 'Reasoning Ability', q: 'Which number is different? 100, 200, 300, 400, 500, 550', options: ['100', '300', '400', '550'], ans: 'D' },
+        { id: 'reasoning15', subject: 'Reasoning Ability', q: 'What comes next? 2, 4, 8, 16, ?', options: ['24', '32', '40', '48'], ans: 'B' },
+        { id: 'reasoning16', subject: 'Reasoning Ability', q: 'Complete: A, C, E, G, ?', options: ['H', 'I', 'J', 'K'], ans: 'B' },
+        { id: 'reasoning17', subject: 'Reasoning Ability', q: 'If 1=5, 2=10, 3=15, then 4=?', options: ['16', '20', '24', '30'], ans: 'B' },
+        { id: 'reasoning18', subject: 'Reasoning Ability', q: 'What is missing? 12, 23, 34, 45, ?', options: ['56', '55', '54', '53'], ans: 'A' },
+        { id: 'reasoning19', subject: 'Reasoning Ability', q: 'Which letter should replace the question mark? Z, Y, X, W, ?', options: ['U', 'V', 'W', 'X'], ans: 'B' },
+        { id: 'reasoning20', subject: 'Reasoning Ability', q: 'Complete: 1, 8, 27, 64, ?', options: ['100', '125', '150', '175'], ans: 'B' },
+        { id: 'reasoning21', subject: 'Reasoning Ability', q: 'If CAT = 3, DOG = 3, then BIRD = ?', options: ['2', '3', '4', '5'], ans: 'C' },
+        { id: 'reasoning22', subject: 'Reasoning Ability', q: 'What comes next? 3, 6, 12, 24, ?', options: ['36', '42', '48', '56'], ans: 'C' },
+        { id: 'reasoning23', subject: 'Reasoning Ability', q: 'Find the odd one: 10, 20, 30, 40, 45', options: ['10', '30', '40', '45'], ans: 'D' },
+        { id: 'reasoning24', subject: 'Reasoning Ability', q: 'If YES = 75, then NO = ?', options: ['41', '42', '43', '44'], ans: 'A' },
+        { id: 'reasoning25', subject: 'Reasoning Ability', q: 'Complete the series: 2, 3, 5, 7, 11, ?', options: ['13', '15', '17', '19'], ans: 'A' },
+    ];
+
+    const correctAnswers = {};
+    const questionTexts = {};
+    
+    questions.forEach(q => {
+        correctAnswers[q.id] = q.ans;
+        questionTexts[q.id] = `${q.q} (Correct: ${q.options[q.ans.charCodeAt(0) - 65]})`;
+    });
+
+    function startTest() {
+        const name = document.getElementById('student-name').value.trim();
+        const age = document.getElementById('student-age').value.trim();
+        const school = document.getElementById('student-school').value.trim();
+        const phone = document.getElementById('parent-phone').value.trim();
+        const email = document.getElementById('parent-email').value.trim();
+
+        if(!name || !age || !school || !phone || !email) {
+            alert('Please fill in all details before starting the test.');
+            return;
+        }
+
+        studentData = {
+            name, age, 
+            classStudying: document.getElementById('student-class').value,
+            school, phone, email
+        };
+
+        // Build quiz form
+        const form = document.getElementById('diagnostic-form');
+        form.innerHTML = '';
+
+        let currentSection = '';
+        questions.forEach((q, index) => {
+            if (q.subject !== currentSection) {
+                currentSection = q.subject;
+                const sectionDiv = document.createElement('div');
+                sectionDiv.className = 'section-title';
+                sectionDiv.textContent = `${currentSection}`;
+                form.appendChild(sectionDiv);
+            }
+
+            const card = document.createElement('div');
+            card.className = 'question-card';
+            card.innerHTML = `
+                <div class="question-header">
+                    <div class="question-title">Q${index + 1}. ${q.q}</div>
+                    <div class="question-category">${q.subject}</div>
+                </div>
+                <div class="options">
+                    ${q.options.map((opt, i) => `
+                        <label>
+                            <input type="radio" name="${q.id}" value="${String.fromCharCode(65 + i)}">
+                            ${String.fromCharCode(65 + i)}) ${opt}
+                        </label>
+                    `).join('')}
+                </div>
+            `;
+            form.appendChild(card);
+        });
+
+        const submitBtn = document.createElement('button');
+        submitBtn.type = 'button';
+        submitBtn.className = 'btn';
+        submitBtn.textContent = '✅ Submit Assessment & View Results';
+        submitBtn.onclick = submitTest;
+        form.appendChild(submitBtn);
+
+        document.getElementById('registration-section').classList.add('hidden');
+        document.getElementById('quiz-section').classList.remove('hidden');
+        startTimer();
+        updateProgress();
+    }
+
+    function startTimer() {
+        const timerDisplay = document.getElementById('timer');
+        timerInterval = setInterval(() => {
+            let minutes = Math.floor(timeLeft / 60);
+            let seconds = timeLeft % 60;
+            timerDisplay.textContent = `⏱ Time Left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                alert("Time's up! Submitting your test automatically.");
+                submitTest();
+            }
+            timeLeft--;
+        }, 1000);
+    }
+
+    function updateProgress() {
+        let answered = 0;
+        questions.forEach(q => {
+            if (document.querySelector(`input[name="${q.id}"]:checked`)) {
+                answered++;
+            }
+        });
+        const percentage = Math.round((answered / questions.length) * 100);
+        document.getElementById('progress-fill').style.width = percentage + '%';
+        document.getElementById('progress-fill').textContent = percentage + '%';
+    }
+
+    // Update progress on radio click
+    document.addEventListener('change', (e) => {
+        if (e.target.type === 'radio') {
+            updateProgress();
+        }
+    });
+
+    let finalScoreRecord = {};
+
+    function submitTest() {
+        clearInterval(timerInterval);
+        
+        let attempted = 0;
+        let correct = 0;
+        let subjectStats = {
+            'Mathematics': { total: 50, correct: 0, incorrect: 0, unanswered: 0 },
+            'English': { total: 25, correct: 0, incorrect: 0, unanswered: 0 },
+            'General Knowledge': { total: 25, correct: 0, incorrect: 0, unanswered: 0 },
+            'Reasoning Ability': { total: 25, correct: 0, incorrect: 0, unanswered: 0 }
+        };
+
+        let reviewHTML = '';
+
+        questions.forEach((q) => {
+            const selected = document.querySelector(`input[name="${q.id}"]:checked`);
+            const userAns = selected ? selected.value : null;
+            const isAttempted = userAns !== null;
+            
+            if (isAttempted) attempted++;
+
+            let isCorrect = isAttempted && userAns === correctAnswers[q.id];
+            if (isCorrect) correct++;
+
+            subjectStats[q.subject].unanswered += !isAttempted ? 1 : 0;
+            subjectStats[q.subject].correct += isCorrect ? 1 : 0;
+            subjectStats[q.subject].incorrect += (isAttempted && !isCorrect) ? 1 : 0;
+
+            let statusClass = isCorrect ? 'correct-ans' : (isAttempted ? 'wrong-ans' : 'unanswered');
+            let statusText = isCorrect ? '✔ Correct' : (isAttempted ? '✘ Incorrect (Your Answer: ' + userAns + ')' : '⚠ Not Answered');
+
+            reviewHTML += `<div class="review-item ${statusClass}">
+                <strong>${q.q}</strong><br>
+                Result: ${statusText}
+            </div>`;
+        });
+
+        let marks = correct * 2; // 2 marks per question (125 × 2 = 250 max)
+        let percentage = Math.round((correct / questions.length) * 100);
+
+        document.getElementById('res-attempted').textContent = attempted;
+        document.getElementById('res-correct').textContent = correct;
+        document.getElementById('res-incorrect').textContent = attempted - correct;
+        document.getElementById('res-percentage').textContent = percentage + '%';
+        document.getElementById('res-marks').textContent = `${marks}/250`;
+
+        // Update subject-wise stats
+        ['Mathematics', 'English', 'General Knowledge', 'Reasoning Ability'].forEach(subject => {
+            const stats = subjectStats[subject];
+            const accuracy = stats.correct + stats.incorrect > 0 
+                ? Math.round((stats.correct / (stats.correct + stats.incorrect)) * 100)
+                : 0;
+            
+            document.getElementById(`${subject.split(' ')[0].toLowerCase()}-correct`).textContent = stats.correct;
+            document.getElementById(`${subject.split(' ')[0].toLowerCase()}-incorrect`).textContent = stats.incorrect;
+            document.getElementById(`${subject.split(' ')[0].toLowerCase()}-unanswered`).textContent = stats.unanswered;
+            document.getElementById(`${subject.split(' ')[0].toLowerCase()}-accuracy`).textContent = accuracy + '%';
+        });
+
+        document.getElementById('student-summary-text').innerHTML = `
+            <strong>Student Name:</strong> ${studentData.name} | <strong>Class:</strong> ${studentData.classStudying}<br>
+            <strong>School:</strong> ${studentData.school} | <strong>Parent Ph:</strong> ${studentData.phone} | <strong>Email:</strong> ${studentData.email}
+        `;
+
+        document.getElementById('detailed-review').innerHTML = reviewHTML;
+
+        document.getElementById('quiz-section').classList.add('hidden');
+        document.getElementById('result-section').classList.remove('hidden');
+
+        // Prepare WhatsApp message URL
+        let waText = `*🎓 SAINIK SCHOOL DIAGNOSTIC TEST - RESULTS*%0A%0A` +
+                     `👤 Name: ${studentData.name}%0A` +
+                     `📚 Class: ${studentData.classStudying}%0A` +
+                     `🏫 School: ${studentData.school}%0A` +
+                     `📞 Phone: ${studentData.phone}%0A` +
+                     `%0A📊 SCORE SUMMARY%0A` +
+                     `✅ Total Marks: ${marks}/250%0A` +
+                     `📈 Percentage: ${percentage}%%0A` +
+                     `✔ Correct: ${correct}/125%0A` +
+                     `✘ Incorrect: ${attempted - correct}%0A` +
+                     `⏭ Unanswered: ${125 - attempted}%0A` +
+                     `%0A🔍 SUBJECT-WISE BREAKDOWN%0A` +
+                     `📐 Math: ${subjectStats['Mathematics'].correct}/50%0A` +
+                     `📖 English: ${subjectStats['English'].correct}/25%0A` +
+                     `🌍 GK: ${subjectStats['General Knowledge'].correct}/25%0A` +
+                     `🧠 Reasoning: ${subjectStats['Reasoning Ability'].correct}/25`;
+
+        // Target: 7824920076
+        document.getElementById('whatsapp-share-btn').href = `https://wa.me/917824920076?text=${waText}`;
+
+        // Prepare Email
+        let emailBody = `Subject: Sainik School Diagnostic Test Results - ${studentData.name}%0A%0A` +
+                        `Dear Parent,%0A%0A` +
+                        `Please find below the diagnostic test results for ${studentData.name}:%0A%0A` +
+                        `Student Details:%0A` +
+                        `Name: ${studentData.name}%0A` +
+                        `Class: ${studentData.classStudying}%0A` +
+                        `School: ${studentData.school}%0A%0A` +
+                        `Test Results:%0A` +
+                        `Total Marks: ${marks}/250%0A` +
+                        `Percentage: ${percentage}%%0A` +
+                        `Correct Answers: ${correct}/125%0A` +
+                        `Incorrect: ${attempted - correct}%0A` +
+                        `Unanswered: ${125 - attempted}%0A%0A` +
+                        `Subject-wise Performance:%0A` +
+                        `Mathematics: ${subjectStats['Mathematics'].correct}/50%0A` +
+                        `English: ${subjectStats['English'].correct}/25%0A` +
+                        `General Knowledge: ${subjectStats['General Knowledge'].correct}/25%0A` +
+                        `Reasoning Ability: ${subjectStats['Reasoning Ability'].correct}/25%0A%0A` +
+                        `Best regards,%0ACoimbatore Defence Academy`;
+
+        document.getElementById('email-share-btn').href = `mailto:parents@example.com?body=${emailBody}`;
+
+        // Save record for CSV
+        finalScoreRecord = { 
+            ...studentData, 
+            attempted, 
+            correct, 
+            incorrect: attempted - correct,
+            marks,
+            percentage,
+            mathCorrect: subjectStats['Mathematics'].correct,
+            engCorrect: subjectStats['English'].correct,
+            gkCorrect: subjectStats['General Knowledge'].correct,
+            reasoningCorrect: subjectStats['Reasoning Ability'].correct
+        };
+    }
+
+    function downloadCSV() {
+        let csvContent = "data:text/csv;charset=utf-8,";
+        csvContent += "Name,Age,Class,School,Phone,Email,Attempted,Correct,Incorrect,Marks,Percentage,Math,English,GK,Reasoning\n";
+        csvContent += `"${finalScoreRecord.name}",${finalScoreRecord.age},"${finalScoreRecord.classStudying}","${finalScoreRecord.school}","${finalScoreRecord.phone}","${finalScoreRecord.email}",${finalScoreRecord.attempted},${finalScoreRecord.correct},${finalScoreRecord.incorrect},${finalScoreRecord.marks},${finalScoreRecord.percentage},${finalScoreRecord.mathCorrect},${finalScoreRecord.engCorrect},${finalScoreRecord.gkCorrect},${finalScoreRecord.reasoningCorrect}\n`;
+
+        let encodedUri = encodeURI(csvContent);
+        let link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", `Sainik_Test_${finalScoreRecord.name.replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.csv`);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+</script>
+
+</body>
+</html>
